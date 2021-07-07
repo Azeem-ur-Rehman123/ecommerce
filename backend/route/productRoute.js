@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { getData, sendData, deleteData } from '../controllers/productData.js';
+import { getData, sendData, deleteData } from '../controllers/productAuth.js';
 
 router.get('/', getData);
 

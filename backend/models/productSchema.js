@@ -17,6 +17,15 @@ const mySchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Plaese enter product quantity'],
   },
+  photo: {
+    type: String,
+  },
+  review: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'review',
+    },
+  ],
 });
 
 const product = new mongoose.model('product', mySchema);

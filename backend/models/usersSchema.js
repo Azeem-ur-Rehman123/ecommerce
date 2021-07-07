@@ -16,9 +16,17 @@ const mySchema = new mongoose.Schema({
       }
     },
   },
+  role: { type: String, enum: ['admin', 'user'], default: 'user' },
   password: {
     type: String,
+    minlength: 4,
+    maxlength: 16,
     require: [true, 'Password is required'],
+  },
+  isActive: {
+    type: Boolean,
+    trim: true,
+    default: false,
   },
 });
 
