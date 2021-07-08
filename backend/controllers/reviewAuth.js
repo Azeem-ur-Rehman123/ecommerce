@@ -9,8 +9,8 @@ export const getData = async (req, res) => {
 };
 export const postData = async (req, res) => {
   try {
-    const myData = new data(req.body);
-    const allData = await myData.save();
+    const { rating, name, comment } = req.body;
+    const token = await userLogin();
     res.status(201).send('Data has Send ');
   } catch (e) {
     res.status(500).send(e);

@@ -20,10 +20,22 @@ const mySchema = new mongoose.Schema({
   photo: {
     type: String,
   },
-  review: [
+  reviews: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'review',
+      rating: {
+        type: Number,
+        min: 0,
+        max: 5,
+        required: [true, 'Ratting is required'],
+      },
+      name: {
+        type: String,
+        required: true,
+      },
+      comment: {
+        type: String,
+        required: true,
+      },
     },
   ],
 });
