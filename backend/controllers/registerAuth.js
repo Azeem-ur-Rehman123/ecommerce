@@ -7,10 +7,9 @@ export const postData = async (req, res) => {
   }
   try {
     const myData = new data(req.body);
-    console.log(myData);
     const check = await myData.save();
     if (check) {
-      res.status(201).send('Data has Send ');
+      res.status(201).json({ message: 'user registered successfully', check });
     }
 
     // .then(() => res.status(201).send('Data has Send '))

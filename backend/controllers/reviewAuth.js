@@ -1,17 +1,25 @@
-import data from '../models/reviewsSchema.js';
+import data from '../models/productSchema.js';
 export const getData = async (req, res) => {
-  const allData = await data.find();
   try {
-    res.status(200).send(allData);
+    res.status(200).send('Data has Send ');
   } catch (e) {
     res.status(500).send(e);
   }
 };
 export const postData = async (req, res) => {
   try {
-    const { rating, name, comment } = req.body;
-    const token = await userLogin();
-    res.status(201).send('Data has Send ');
+    const { _id, rating, name, comment } = req.body;
+    const reviewData = { rating, name, comment };
+    const myData = await data.findOneAndUpdate(
+      { _id: _id },
+      { $push: { reviews: reviewData } }
+    );
+    console.log(myData);
+
+    const response = await myData.reviews.push([rating, name, comment]);
+    if (response) {
+      res.status(201).json({ message: 'review has successfully pushed' });
+    }
   } catch (e) {
     res.status(500).send(e);
   }

@@ -1,7 +1,6 @@
 import data from '../models/usersSchema.js';
 import bcrypt from 'bcryptjs';
 
-import jwt from 'jsonwebtoken';
 export const checkAuth = async (req, res) => {
   try {
     const { email, password } = req.body;

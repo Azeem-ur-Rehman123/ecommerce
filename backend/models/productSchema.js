@@ -26,19 +26,32 @@ const mySchema = new mongoose.Schema({
         type: Number,
         min: 0,
         max: 5,
-        required: [true, 'Ratting is required'],
+        required: [true, 'Ratting field is required'],
       },
       name: {
         type: String,
-        required: true,
+        required: [true, 'name field is required'],
       },
       comment: {
         type: String,
-        required: true,
+        required: [true, 'comment field is required'],
       },
     },
   ],
 });
+// mySchema.methods.userReview = async function () {
+//   try {
+//     console.log('ok');
+//     this.reviews = this.reviews.concat({
+//       rating: rating,
+//       name: name,
+//       comment: comment,
+//     });
+//     await this.save();
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 const product = new mongoose.model('product', mySchema);
 export default product;

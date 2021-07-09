@@ -1,9 +1,17 @@
 import express from 'express';
 const router = express.Router();
-import { getData, sendData, deleteData } from '../controllers/productAuth.js';
+import {
+  getData,
+  sendData,
+  deleteData,
+  getById,
+  updateData,
+} from '../controllers/productAuth.js';
 
 router.get('/', getData);
+router.get('/id', getById);
 
 router.post('/', sendData);
-router.delete('/:deletepost', deleteData);
+router.put('/', updateData);
+router.delete('/id', deleteData);
 export default router;
