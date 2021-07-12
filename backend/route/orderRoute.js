@@ -6,7 +6,7 @@ import {
   postOrder,
   deleteOrder_user,
   deleteOrder_admin,
-} from '../controllers/orderAuth.js';
+} from '../controllers/orderController.js';
 
 router.get('/user/', userOrder);
 router.get('/admin/', getAllOrder);

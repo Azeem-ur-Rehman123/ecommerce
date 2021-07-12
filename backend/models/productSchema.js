@@ -17,9 +17,11 @@ const mySchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Plaese enter product quantity'],
   },
-  photo: {
-    type: String,
-  },
+  photos: [
+    {
+      type: String,
+    },
+  ],
   reviews: [
     {
       rating: {

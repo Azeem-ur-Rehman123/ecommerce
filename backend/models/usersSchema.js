@@ -34,20 +34,35 @@ const mySchema = new mongoose.Schema({
     require: [true, 'Password is required'],
   },
 
-  isActive: {
-    type: Boolean,
-    trim: true,
-    default: false,
+  avatar: {
+    type: String,
+    require: [true, 'Profile image is required'],
+  },
+  code: {
+    type: String,
+    require: [true, 'token is required'],
+  },
+  expireIn: {
+    type: Number,
+    require: [true, 'Expire date is required'],
   },
 });
 
 mySchema.pre('save', async function (next) {
   if (this.isModified('password')) {
     this.password = await bcrypt.hash(this.password, 12);
-    this.cpassword = await bcrypt.hash(this.cpassword, 12);
   }
   next();
 });
+mySchema.pre('findOneAndUpdate', async function (next) {
+  console.log('enter');
+  if (this.isModified('password')) {
+    console.log('enter2');
+    this.password = await bcrypt.hash(this.password, 12);
+  }
+  next();
+});
+
 mySchema.methods.generateToken = async function () {
   try {
     const token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);

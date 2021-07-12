@@ -25,7 +25,6 @@ const mySchema = new mongoose.Schema({
     type: String,
     require: [true, 'tax is required'],
   },
-
   mobile: {
     type: String,
     required: [true, 'moble no is required'],

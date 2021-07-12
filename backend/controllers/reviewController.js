@@ -16,8 +16,7 @@ export const postData = async (req, res) => {
     );
     console.log(myData);
 
-    const response = await myData.reviews.push([rating, name, comment]);
-    if (response) {
+    if (myData) {
       res.status(201).json({ message: 'review has successfully pushed' });
     }
   } catch (e) {

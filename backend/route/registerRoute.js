@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { postData } from '../controllers/registerAuth.js';
+import { postData } from '../controllers/registerController.js';
 
 router.post('/', postData);
 export default router;
